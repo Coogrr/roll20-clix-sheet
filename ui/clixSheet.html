@@ -7,10 +7,25 @@
   <body>
     <input type="text" name="attr_setnumber">
     <input type="number" name="attr_click">
-    <input type="number" name="attr_speed">
-    <input type="number" name="attr_speed_max">
-    <input type="number" name="attr_defense">
-    <input type="number" name="attr_defense_max">
+    <label>speed</label>
+    <input type="number" name="attr_speed_master">
+    <label>attack</label>
+    <input type="number" name="attr_speed_master_max">
+    <label>defense</label>
+    <input type="number" name="attr_defense_master">
+    <label>damage</label>
+    <input type="number" name="attr_defense_master_max">
+    <break/>
+    <fieldset class="repeating_clicks">
+      <label>speed</label>
+      <input type="number" name="attr_speed">
+      <label>attack</label>
+      <input type="number" name="attr_attack">
+      <label>defense</label>
+      <input type="number" name="attr_defense">
+      <label>damage</label>
+      <input type="number" name="attr_damage">
+    </fieldset>
   </body>
   <script type="text/worker">
 
