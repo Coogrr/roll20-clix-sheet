@@ -8,13 +8,15 @@
     <input type="text" name="attr_setnumber">
     <input type="number" name="attr_click">
     <label>speed</label>
-    <input type="number" name="attr_speed_master">
+    <input type="text" name="attr_click_max">
     <label>attack</label>
-    <input type="number" name="attr_speed_master_max">
+    <input type="text" name="attr_attack_current">
     <label>defense</label>
-    <input type="number" name="attr_defense_master">
+    <input type="text" name="attr_attack_current_max">
     <label>damage</label>
-    <input type="number" name="attr_defense_master_max">
+    <input type="text" name="attr_damage_current">
+    <label>range</label>
+    <input type="text" name="attr_damage_current_max">
     <break/>
     <fieldset class="repeating_clicks">
       <label>speed</label>
@@ -31,13 +33,26 @@
 
     on("change:click", function() {
       console.log("HI");
-      setAttrs({
-        speed: 10,
-        speed_max: 12,
-        defense: 18,
-        defense_max: 2
+    getAttrs(["click"], function(currentClick) {
+      console.log("CLICK" + currentClick.click);
+      getSectionIDs("clicks", function(idArray) {
+       console.log("IDS" + idArray[0]);
+       getAttrs(["repeating_clicks_" + idArray[currentClick.click-1] +"_speed",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_attack",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_defense",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_damage"], function(values) {
+        console.log("VALUES" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"]);
+        setAttrs({
+          click_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_speed"],
+          attack_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_attack"],
+          attack_current_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_defense"],
+          damage_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"],
+          damage_current_max: "0"
+        });
       });
     });
+    });
+  });
 
   // ... etc
 
