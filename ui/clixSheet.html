@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" name="attr_setnumber">
+    <input type="number" name="attr_click">
+    <input type="number" name="attr_speed">
+    <input type="number" name="attr_speed_max">
+    <input type="number" name="attr_defense">
+    <input type="number" name="attr_defense_max">
+  </body>
+  <script type="text/worker">
+
+    on("change:click", function() {
+      console.log("HI");
+      setAttrs({
+        speed: 10,
+        speed_max: 12,
+        defense: 18,
+        defense_max: 2
+      });
+    });
+
+  // ... etc
+
+  </script>
+</html>
