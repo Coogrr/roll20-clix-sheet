@@ -21,12 +21,72 @@
     <fieldset class="repeating_clicks">
       <label>speed</label>
       <input type="number" name="attr_speed">
+      <label>speed powers</label>
+      <select name="attr_speedpowers">
+        <option value="CH">Charge (CH)</option>
+        <option value="EN">Earthbound (EN)</option>
+        <option value="FL">Flurry (FL)</option>
+        <option value="FB">Force Blast (FB)</option>
+        <option value="HS">Hypersonic Speed (HS)</option>
+        <option value="LC">Leap/Climb (LC)</option>
+        <option value="MC">Mind Control (MC)</option>
+        <option value="PT">Phasing/Teleport (PT)</option>
+        <option value="PL">Plasticity (PL)</option>
+        <option value="RS">Running Shot (RS)</option>
+        <option value="SI">Sidestep (SI)</option>
+        <option value="ST">Stealth (ST)</option>
+      </select>
       <label>attack</label>
       <input type="number" name="attr_attack">
+      <label>attack powers</label>
+      <select name="attr_attackpowers">
+        <option value="BC">Blades/Claws (BC)</option>
+        <option value="IN">Incapacitate (IN)</option>
+        <option value="PB">Penetrating/Psychic Blast (PB)</option>
+        <option value="PO">Poison (PO)</option>
+        <option value="PW">Pulse Wave (PW)</option>
+        <option value="QU">Quake (QU)</option>
+        <option value="SM">Smoke Cloud (SM)</option>
+        <option value="SE">Steal Energy (SE)</option>
+        <option value="SS">Super Strength (SS)</option>
+        <option value="TK">Telekinesis (TK)</option>
+        <option value="PS">Precision Strike (PS)</option>
+        <option value="EE">Energy Explosion (EE)</option>
+      </select>
       <label>defense</label>
       <input type="number" name="attr_defense">
+      <label>defense powers</label>
+      <select name="attr_defensepowers">
+        <option value="BA">Barrier (BA)</option>
+        <option value="CR">Combat Reflexes (CR)</option>
+        <option value="DE">Defend (DE)</option>
+        <option value="ED">Energy Shield/Deflection (ED)</option>
+        <option value="IM">Impervious (IM)</option>
+        <option value="IN">Invincible (IN)</option>
+        <option value="IV">Invulnerable (IV)</option>
+        <option value="MA">Mastermind (MA)</option>
+        <option value="RE">Regeneration (RE)</option>
+        <option value="SU">Super Senses (SU)</option>
+        <option value="TO">Toughness (TO)</option>
+        <option value="WI">Willpower (WI)</option>
+      </select>
       <label>damage</label>
       <input type="number" name="attr_damage">
+      <label>damage powers</label>
+      <select name="attr_damagepowers">
+        <option value="BF">Battle Fury (BF)</option>
+        <option value="CE">Close Combat Expert (CE)</option>
+        <option value="EM">Empower (EM)</option>
+        <option value="EH">Enhancement (EH)</option>
+        <option value="EW">Exploit Weakness (EW)</option>
+        <option value="LE">Leadership (LE)</option>
+        <option value="OU">Outwit (OU)</option>
+        <option value="PE">Perplex (PE)</option>
+        <option value="PC">Probability Control (PC)</option>
+        <option value="RC">Ranged Comabt Expert (RC)</option>
+        <option value="SC">Shape Change (SC)</option>
+        <option value="SP">Support (SP)</option>
+      </select>
     </fieldset>
   </body>
   <script type="text/worker">
@@ -40,14 +100,21 @@
        getAttrs(["repeating_clicks_" + idArray[currentClick.click-1] +"_speed",
                 "repeating_clicks_" + idArray[currentClick.click-1] +"_attack",
                 "repeating_clicks_" + idArray[currentClick.click-1] +"_defense",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_damage"], function(values) {
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_damage",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers",
+                "repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"], function(values) {
         console.log("VALUES" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"]);
         setAttrs({
-          click_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_speed"],
-          attack_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_attack"],
-          attack_current_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_defense"],
-          damage_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"],
-          damage_current_max: "0"
+          click_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_speed"]
+                                                  + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers"] + ")",
+          attack_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_attack"]
+                                                        + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers"] + ")",
+          attack_current_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_defense"]
+                                                          + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers"] + ")",
+          damage_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"]
+                                                      + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"] + ")"
         });
       });
     });
