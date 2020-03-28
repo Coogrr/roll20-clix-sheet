@@ -1,92 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link href="clixSheet.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <input type="text" name="attr_setnumber">
-    <input type="number" name="attr_click">
-    <label>speed</label>
-    <input type="text" name="attr_click_max">
-    <label>attack</label>
-    <input type="text" name="attr_attack_current">
-    <label>defense</label>
-    <input type="text" name="attr_attack_current_max">
-    <label>damage</label>
-    <input type="text" name="attr_damage_current">
-    <label>range</label>
-    <input type="text" name="attr_damage_current_max">
+    <div class="controls">
+      <div class="setnumber">
+        <label>Set Number</label>
+        <input type="text" name="attr_setnumber">
+      </div>
+      <div>
+        <label>Click Number</label>
+        <input type="number" name="attr_click">
+      </div>
+      <div>
+        <label>Range</label>
+        <input type="text" name="attr_damage_current_max">
+      </div>
+    </div>
+    <div class="current_stats">
+        <div>
+          <label>Speed</label>
+          <input type="text" name="attr_click_max" readonly="readonly">
+        </div>
+        <div>
+          <label>Attack</label>
+          <input type="text" name="attr_attack_current" readonly="readonly">
+        </div>
+        <div>
+          <label>Defense</label>
+          <input type="text" name="attr_attack_current_max" readonly="readonly">
+        </div>
+        <div>
+          <label>Damage</label>
+          <input type="text" name="attr_damage_current" readonly="readonly">
+        </div>
+    </div>
     <break/>
     <fieldset class="repeating_clicks">
-      <label>speed</label>
-      <input type="number" name="attr_speed">
-      <label>speed powers</label>
-      <select name="attr_speedpowers">
-        <option value="CH">Charge (CH)</option>
-        <option value="EN">Earthbound (EN)</option>
-        <option value="FL">Flurry (FL)</option>
-        <option value="FB">Force Blast (FB)</option>
-        <option value="HS">Hypersonic Speed (HS)</option>
-        <option value="LC">Leap/Climb (LC)</option>
-        <option value="MC">Mind Control (MC)</option>
-        <option value="PT">Phasing/Teleport (PT)</option>
-        <option value="PL">Plasticity (PL)</option>
-        <option value="RS">Running Shot (RS)</option>
-        <option value="SI">Sidestep (SI)</option>
-        <option value="ST">Stealth (ST)</option>
-      </select>
-      <label>attack</label>
-      <input type="number" name="attr_attack">
-      <label>attack powers</label>
-      <select name="attr_attackpowers">
-        <option value="BC">Blades/Claws (BC)</option>
-        <option value="IN">Incapacitate (IN)</option>
-        <option value="PB">Penetrating/Psychic Blast (PB)</option>
-        <option value="PO">Poison (PO)</option>
-        <option value="PW">Pulse Wave (PW)</option>
-        <option value="QU">Quake (QU)</option>
-        <option value="SM">Smoke Cloud (SM)</option>
-        <option value="SE">Steal Energy (SE)</option>
-        <option value="SS">Super Strength (SS)</option>
-        <option value="TK">Telekinesis (TK)</option>
-        <option value="PS">Precision Strike (PS)</option>
-        <option value="EE">Energy Explosion (EE)</option>
-      </select>
-      <label>defense</label>
-      <input type="number" name="attr_defense">
-      <label>defense powers</label>
-      <select name="attr_defensepowers">
-        <option value="BA">Barrier (BA)</option>
-        <option value="CR">Combat Reflexes (CR)</option>
-        <option value="DE">Defend (DE)</option>
-        <option value="ED">Energy Shield/Deflection (ED)</option>
-        <option value="IM">Impervious (IM)</option>
-        <option value="IN">Invincible (IN)</option>
-        <option value="IV">Invulnerable (IV)</option>
-        <option value="MA">Mastermind (MA)</option>
-        <option value="RE">Regeneration (RE)</option>
-        <option value="SU">Super Senses (SU)</option>
-        <option value="TO">Toughness (TO)</option>
-        <option value="WI">Willpower (WI)</option>
-      </select>
-      <label>damage</label>
-      <input type="number" name="attr_damage">
-      <label>damage powers</label>
-      <select name="attr_damagepowers">
-        <option value="BF">Battle Fury (BF)</option>
-        <option value="CE">Close Combat Expert (CE)</option>
-        <option value="EM">Empower (EM)</option>
-        <option value="EH">Enhancement (EH)</option>
-        <option value="EW">Exploit Weakness (EW)</option>
-        <option value="LE">Leadership (LE)</option>
-        <option value="OU">Outwit (OU)</option>
-        <option value="PE">Perplex (PE)</option>
-        <option value="PC">Probability Control (PC)</option>
-        <option value="RC">Ranged Comabt Expert (RC)</option>
-        <option value="SC">Shape Change (SC)</option>
-        <option value="SP">Support (SP)</option>
-      </select>
+      <div>
+        <label>Speed</label>
+        <input type="number" name="attr_speed">
+        <select name="attr_speedpowers">
+          <option value="Ch">Charge (Ch)</option>
+          <option value="En">Earthbound (En)</option>
+          <option value="Fl">Flurry (Fl)</option>
+          <option value="Fb">Force Blast (Fb)</option>
+          <option value="Hs">Hypersonic Speed (Hs)</option>
+          <option value="Lc">Leap/Climb (Lc)</option>
+          <option value="Mc">Mind Control (Mc)</option>
+          <option value="Pt">Phasing/Teleport (Pt)</option>
+          <option value="Pl">Plasticity (Pl)</option>
+          <option value="Rs">Running Shot (Rs)</option>
+          <option value="Si">Sidestep (Si)</option>
+          <option value="St">Stealth (St)</option>
+        </select>
+      </div>
+      <div>
+        <label>Attack</label>
+        <input type="number" name="attr_attack">
+        <select name="attr_attackpowers">
+          <option value="Bc">Blades/Claws (Bc)</option>
+          <option value="In">Incapacitate (In)</option>
+          <option value="Pb">Penetrating/Psychic Blast (Pb)</option>
+          <option value="Po">Poison (Po)</option>
+          <option value="Pw">Pulse Wave (Pw)</option>
+          <option value="Qu">Quake (Qu)</option>
+          <option value="Sm">Smoke Cloud (Sm)</option>
+          <option value="Se">Steal Energy (Se)</option>
+          <option value="Ss">Super Strength (Ss)</option>
+          <option value="Tk">Telekinesis (Tk)</option>
+          <option value="Ps">Precision Strike (Ps)</option>
+          <option value="Ee">Energy Explosion (Ee)</option>
+        </select>
+      </div>
+      <div>
+        <label>Defense</label>
+        <input type="number" name="attr_defense">
+        <select name="attr_defensepowers">
+          <option value="Ba">Barrier (Ba)</option>
+          <option value="Cr">Combat Reflexes (Cr)</option>
+          <option value="De">Defend (De)</option>
+          <option value="Ed">Energy Shield/Deflection (Ed)</option>
+          <option value="Im">Impervious (Im)</option>
+          <option value="In">Invincible (In)</option>
+          <option value="Iv">Invulnerable (Iv)</option>
+          <option value="Ma">Mastermind (Ma)</option>
+          <option value="Re">Regeneration (Re)</option>
+          <option value="Su">Super Senses (Su)</option>
+          <option value="To">Toughness (To)</option>
+          <option value="Wi">Willpower (Wi)</option>
+        </select>
+      </div>
+      <div>
+        <label>Damage</label>
+        <input type="number" name="attr_damage">
+        <select name="attr_damagepowers">
+          <option value="Bf">Battle Fury (Bf)</option>
+          <option value="Ce">Close Combat Expert (Ce)</option>
+          <option value="Em">Empower (Em)</option>
+          <option value="Eh">Enhancement (Eh)</option>
+          <option value="Ew">Exploit Weakness (Ew)</option>
+          <option value="Le">Leadership (Le)</option>
+          <option value="Ou">Outwit (Ou)</option>
+          <option value="Pe">Perplex (Pe)</option>
+          <option value="Pc">Probability Control (Pc)</option>
+          <option value="Rc">Ranged Comabt Expert (Rc)</option>
+          <option value="Sc">Shape Change (Sc)</option>
+          <option value="Sp">Support (Sp)</option>
+        </select>
+      </div>
     </fieldset>
   </body>
   <script type="text/worker">
