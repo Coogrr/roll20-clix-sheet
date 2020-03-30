@@ -56,6 +56,7 @@
           <option value="Rs">Running Shot (Rs)</option>
           <option value="Si">Sidestep (Si)</option>
           <option value="St">Stealth (St)</option>
+          <option value="Sp">Special (Sp)</option>
         </select>
       </div>
       <div>
@@ -74,6 +75,7 @@
           <option value="Tk">Telekinesis (Tk)</option>
           <option value="Ps">Precision Strike (Ps)</option>
           <option value="Ee">Energy Explosion (Ee)</option>
+          <option value="Sp">Special (Sp)</option>
         </select>
       </div>
       <div>
@@ -92,6 +94,7 @@
           <option value="Su">Super Senses (Su)</option>
           <option value="To">Toughness (To)</option>
           <option value="Wi">Willpower (Wi)</option>
+          <option value="Sp">Special (Sp)</option>
         </select>
       </div>
       <div>
@@ -109,40 +112,67 @@
           <option value="Pc">Probability Control (Pc)</option>
           <option value="Rc">Ranged Comabt Expert (Rc)</option>
           <option value="Sc">Shape Change (Sc)</option>
-          <option value="Sp">Support (Sp)</option>
+          <option value="So">Support (Sp)</option>
+          <option value="Sp">Special (Sp)</option>
         </select>
       </div>
     </fieldset>
   </body>
   <script type="text/worker">
 
+  /*on("sheet:opened", function() {
+    var default_attr = {};
+    getAttrs(["click"], function(currentClick) {
+    default_attr["width"] = 70;
+    default_attr["height"] = 70;
+    default_attr["bar1_value"] = 10;
+    default_attr["bar1_max"] = 15;
+
+  }*/
+
     on("change:click", function() {
       console.log("HI");
-    getAttrs(["click"], function(currentClick) {
-      console.log("CLICK" + currentClick.click);
-      getSectionIDs("clicks", function(idArray) {
-       console.log("IDS" + idArray[0]);
-       getAttrs(["repeating_clicks_" + idArray[currentClick.click-1] +"_speed",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_attack",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_defense",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_damage",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers",
-                "repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"], function(values) {
-        console.log("VALUES" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"]);
-        setAttrs({
-          click_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_speed"]
-                                                  + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers"] + ")",
-          attack_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_attack"]
-                                                        + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers"] + ")",
-          attack_current_max: values["repeating_clicks_" + idArray[currentClick.click-1] +"_defense"]
-                                                          + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers"] + ")",
-          damage_current: values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"]
-                                                      + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"] + ")"
+      getAttrs(["click"], function(currentClick) {
+        console.log("CLICK" + currentClick.click);
+        getSectionIDs("clicks", function(idArray) {
+         console.log("IDS" + idArray[0]);
+         getAttrs(["repeating_clicks_" + idArray[currentClick.click-1] +"_speed",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_attack",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_defense",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_damage",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers",
+                  "repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"], function(values) {
+          console.log("VALUES" + idArray.length);
+          var speed = "";
+          var attack = "";
+          var defense = "";
+          var damage = "";
+          if(currentClick.click <= idArray.length){
+            speed = values["repeating_clicks_" + idArray[currentClick.click-1] +"_speed"]
+                                                    + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers"] + ")";
+            attack = values["repeating_clicks_" + idArray[currentClick.click-1] +"_attack"]
+                                                          + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers"] + ")";
+            defense = values["repeating_clicks_" + idArray[currentClick.click-1] +"_defense"]
+                                                            + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers"] + ")";
+            damage = values["repeating_clicks_" + idArray[currentClick.click-1] +"_damage"]
+                                                        + "(" + values["repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"] + ")";
+          }
+          else{
+            speed = "0(KO)";
+            attack = "0(KO)";
+            defense = "0(KO)";
+            damage = "0(KO)";
+          }
+          setAttrs({
+            click_max: speed,
+            attack_current: attack,
+            attack_current_max: defense,
+            damage_current: damage
+          });
         });
       });
-    });
     });
   });
 
