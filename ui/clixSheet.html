@@ -9,7 +9,8 @@
     <div class="controls">
       <div class="setnumber">
         <label>Dial</label>
-        <input type="text" name="attr_dial">
+        <textarea class="statsentry" type="text" name="attr_dial" placeholder="Paste dial info here"></textarea>
+        <button type="action" name="act_populate">Populate Dial</button>
       </div>
       <div>
         <label>Click Number</label>
@@ -150,7 +151,16 @@
     }
 
 
-    on("change:dial", function(){
+    on("clicked:populate", function(){
+
+      getSectionIDs("clicks", function(idArray) {
+        console.log("FIRST ID: " + idArray[0]);
+        for(var id = 0; id < idArray.length; id++){
+          removeRepeatingRow("repeating_clicks_" + idArray[id]);
+        }
+
+      });
+
       getAttrs(["dial"], function(dialCode){
         var regEx = /\[slot=([a-z]*)]([0-9]*)\[\/slot]/g;
         var bbCode = dialCode.dial;
