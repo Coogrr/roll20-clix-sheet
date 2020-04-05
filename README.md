@@ -1,4 +1,6 @@
-# roll20-clix-sheet
+# Heroclix Roll20 Character Sheet
+
+
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Create%20Character.png)
 
