@@ -10,19 +10,35 @@ One the character has been created click save changes and go to the character sh
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Character%20Sheet.png)
 
+To fill in the character sheet manually just click the add button to add a new click and then enter the character's stats on that click. In order to load a character intro the sheet automatically go to hcrealms, and find the character you want to load in in the units section. click the dial button on the top right of the chracter dial, as shown below:
+
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/HCRealms%20DialCode%20Link.png)
 
+Once on the Inline dial page copy the contents of the BBcode box, as shown below, and return to the character sheet:
+
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/HCRealms%20BBCode.png)
+
+Paste the BBcode into the dial box on the character sheet and click the populate button 
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Character%20Sheet%20BBCode.png)
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Character%20Sheet%20Populate.png)
 
+The result should look like this:
+
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Populated%20Character%20Sheet.png)
+
+**Adding the Token and Dial to the Map**
+
+Once your character sheet is populated, whether manually or automatically you have to add the image to the map and relate it to the character sheet so that the dial can appear on map. To get started click the settings button that appears when you click on the image, as shown below: 
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Token%20Settings.png)
 
+The relate the first bar to Clicks, the second to attack_current and the third to damage_current. If you aren't using an image of the actual character I reccomend using an image of a black square so that the bars show better on map and moving the bars to bottom overlapping in the advanced tab. Also check show nameplate if not using an actual image of the character. When you are done filling in the setting spage it should look like this:
+
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Filled%20Token%20Settings.png)
+
+To change clicks change the value in the green bubble when clicking on the character as shown below. Your final result shouyld look like this:
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Filled%20Token%20On%20Map.png)
 
