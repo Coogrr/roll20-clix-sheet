@@ -4,9 +4,9 @@
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Character%20Sheet.png)
 
-![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/HCRealms%20BBCode.png)
-
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/HCRealms%20DialCode%20Link.png)
+
+![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/HCRealms%20BBCode.png)
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Character%20Sheet%20BBCode.png)
 
