@@ -9,7 +9,7 @@
     <div class="controls">
       <div class="setnumber">
         <label>Dial</label>
-        <textarea class="statsentry" type="text" name="attr_dial" placeholder="Paste dial info here"></textarea>
+        <textarea class="statsentry" type="text" name="attr_dial" placeholder="To get started find your BBCode and paste here"></textarea>
         <button type="action" name="act_populate">Populate Dial</button>
       </div>
       <div>
@@ -19,6 +19,10 @@
       <div>
         <label>Range</label>
         <input type="text" name="attr_damage_current_max">
+      </div>
+      <div>
+        <label>Powers</label>
+        <textarea class="statsentry" type="text" name="attr_powers"></textarea>
       </div>
     </div>
     <div class="current_stats">
@@ -142,6 +146,7 @@
         return "None";
       }
     }
+
     function powerSet(values, attributeName) {
       if(values[attributeName]!="None"){
         return "(" + values[attributeName] + ")";
@@ -161,9 +166,33 @@
 
       });
 
+
+
       getAttrs(["dial"], function(dialCode){
-        var regEx = /\[slot=([a-z]*)]([0-9]*)\[\/slot]/g;
         var bbCode = dialCode.dial;
+
+
+        var rangeRegEx = /\Range:\ \[b\]([0-9]*)/;
+        var range = rangeRegEx.exec(bbCode);
+
+        console.log("RANGE: " + range);
+        setAttrs({
+          damage_current_max: range[1]
+        });
+
+        var powersRegEx = /\((.*)\[\/b\](.*)/g;
+
+        var allPowers="";
+
+        while( match = powersRegEx.exec(bbCode)){
+          console.log("POWERS: " + match);
+          allPowers = allPowers + match[1] + match[2] + "\n";
+        }
+        setAttrs({
+          powers: allPowers
+        });
+
+        var regEx = /\[slot=([a-z]*)]([0-9]*)\[\/slot]/g;
         var speedPowers = {
           "green" : "Ch",
           "lime" : "En",
