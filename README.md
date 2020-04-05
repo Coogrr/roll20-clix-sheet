@@ -34,7 +34,7 @@ Once your character sheet is populated, whether manually or automatically you ha
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Token%20Settings.png)
 
-The relate the first bar to Clicks, the second to attack_current and the third to damage_current. If you aren't using an image of the actual character I reccomend using an image of a black square so that the bars show better on map and moving the bars to bottom overlapping in the advanced tab. Also check show nameplate if not using an actual image of the character. When you are done filling in the setting spage it should look like this:
+Then relate the first bar to Clicks, the second to attack_current and the third to damage_current. If you aren't using an image of the actual character I reccomend using an image of a black square so that the bars show better on map and moving the bars to bottom overlapping in the advanced tab. Also check show nameplate if not using an actual image of the character. When you are done filling in the setting spage it should look like this:
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Filled%20Token%20Settings.png)
 
