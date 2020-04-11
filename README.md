@@ -1,8 +1,13 @@
 # Heroclix Roll20 Character Sheet
 
+**The Character Sheet / Map Visibility**
+The biggest problem with playing Heroclix on Roll20 is the lack of visibilty into the figures on map. you can have the dials open on HCRealms and check, but that current emthod makes it easy to miss changes in click on figures and hard to keep track of which of multiple of the same figure is on which click. The goal of this extension is to allow the dials to displayed on map in Roll20 to prevent those kinds of mistakes from happening and to make Roll20 play a little smoother.
+
+![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Final%Product.png)
+
 **Creating A New Figure**
 
-In order to use this character sheet you must first have access to a game using this charcter sheet. In order to gain acces to a roll20 game that uses this you must either have Roll20 Pro which allows you to use custom sheets and put the HTMl and CSS for this sheet into the settings page or contact me for an invite to game that uses the sheet. Once you are in a game that uses the sheet you must first add a character in the journal:
+In order to use this character sheet you must first have access to a game using this character sheet. In order to gain acces to a roll20 game that uses this you must either have Roll20 Pro which allows you to use custom sheets and put the HTMl and CSS for this sheet into the settings page or contact me for an invite to game that uses the sheet. Once you are in a game that uses the sheet you must first add a character in the journal:
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Create%20Character.png)
 
