@@ -3,7 +3,7 @@
 **The Character Sheet / Map Visibility**
 The biggest problem with playing Heroclix on Roll20 is the lack of visibilty into the figures on map. you can have the dials open on HCRealms and check, but that current emthod makes it easy to miss changes in click on figures and hard to keep track of which of multiple of the same figure is on which click. The goal of this extension is to allow the dials to displayed on map in Roll20 to prevent those kinds of mistakes from happening and to make Roll20 play a little smoother.
 
-![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Final%Product.png)
+![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Final%20product.PNG)
 
 **Creating A New Figure**
 
