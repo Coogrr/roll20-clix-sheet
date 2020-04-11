@@ -46,7 +46,7 @@ Then relate the first bar to Clicks, the second to attack_current and the third 
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Filled%20Token%20Settings.png)
 
-To change clicks change the value in the green bubble when clicking on the character as shown below. Your final result shouyld look like this:
+To change clicks change the value in the green bubble when clicking on the character as shown below. Your final result should look like this:
 
 ![First Image](https://github.com/Coogrr/roll20-clix-sheet/blob/master/Documentation/Filled%20Token%20On%20Map.png)
 
