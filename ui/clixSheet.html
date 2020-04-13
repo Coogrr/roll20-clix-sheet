@@ -51,7 +51,7 @@
         <select name="attr_speedpowers">
           <option value="None">None</option>
           <option value="Ch">Charge (Ch)</option>
-          <option value="En">Earthbound (En)</option>
+          <option value="Eb">Earthbound (Eb)</option>
           <option value="Fl">Flurry (Fl)</option>
           <option value="Fb">Force Blast (Fb)</option>
           <option value="Hs">Hypersonic Speed (Hs)</option>
@@ -93,15 +93,15 @@
           <option value="Ba">Barrier (Ba)</option>
           <option value="Cr">Combat Reflexes (Cr)</option>
           <option value="De">Defend (De)</option>
-          <option value="Ed">Energy Shield/Deflection (Ed)</option>
-          <option value="Im">Impervious (Im)</option>
+          <option value="Es">Energy Shield/Deflection (Es)</option>
+          <option value="Ip">Impervious (Ip)</option>
           <option value="In">Invincible (In)</option>
           <option value="Iv">Invulnerable (Iv)</option>
-          <option value="Ma">Mastermind (Ma)</option>
-          <option value="Re">Regeneration (Re)</option>
+          <option value="Mm">Mastermind (Mm)</option>
+          <option value="Rg">Regeneration (Rg)</option>
           <option value="Su">Super Senses (Su)</option>
           <option value="To">Toughness (To)</option>
-          <option value="Wi">Willpower (Wi)</option>
+          <option value="Wp">Willpower (Wp)</option>
           <option value="Sp">Special (Sp)</option>
         </select>
       </div>
@@ -111,17 +111,17 @@
         <select name="attr_damagepowers">
           <option value="None">None</option>
           <option value="Bf">Battle Fury (Bf)</option>
-          <option value="Ce">Close Combat Expert (Ce)</option>
+          <option value="Cc">Close Combat Expert (Cc)</option>
           <option value="Em">Empower (Em)</option>
-          <option value="Eh">Enhancement (Eh)</option>
+          <option value="En">Enhancement (En)</option>
           <option value="Ew">Exploit Weakness (Ew)</option>
           <option value="Le">Leadership (Le)</option>
-          <option value="Ou">Outwit (Ou)</option>
-          <option value="Pe">Perplex (Pe)</option>
+          <option value="Ow">Outwit (Ow)</option>
+          <option value="Px">Perplex (Px)</option>
           <option value="Pc">Probability Control (Pc)</option>
           <option value="Rc">Ranged Comabt Expert (Rc)</option>
           <option value="Sc">Shape Change (Sc)</option>
-          <option value="So">Support (Sp)</option>
+          <option value="So">Support (So)</option>
           <option value="Sp">Special (Sp)</option>
         </select>
       </div>
@@ -138,6 +138,13 @@
     default_attr["bar1_max"] = 15;
 
   }*/
+
+  function statNormalization(stat) {
+    if(stat=="."){
+      stat=0;
+    }
+    return stat;
+  }
 
     function powerLookup(powerMap, powerName) {
       if(hasOwnProperty.call(powerMap, powerName.toLowerCase())){
@@ -192,10 +199,10 @@
           powers: allPowers
         });
 
-        var regEx = /\[slot=([a-z]*)]([0-9]*)\[\/slot]/g;
+        var regEx = /\[slot=([a-z]*)]([0-9]*|\.)\[\/slot]/g;
         var speedPowers = {
           "green" : "Ch",
-          "lime" : "En",
+          "lime" : "Eb",
           "red" : "Fl",
           "purple" : "Fb",
           "brown" : "Hs",
@@ -224,33 +231,33 @@
           "special" : "Sp"
         };
         var defensePowers = {
-          "green" : "Ed",
+          "green" : "Es",
           "lime" : "Cr",
           "red" : "Su",
-          "purple" : "Wi",
+          "purple" : "Wp",
           "brown" : "Im",
           "orange" : "To",
           "blue" : "Ba",
           "yellow" : "De",
-          "darkblue" : "Ma",
-          "gray" : "Iv",
+          "darkblue" : "Mm",
+          "gray" : "Ip",
           "pink" : "In",
-          "black" : "Re",
+          "black" : "Rg",
           "special" : "Sp"
         };
         var damagePowers = {
-          "green" : "Eh",
+          "green" : "En",
           "lime" : "Ew",
           "red" : "Rc",
-          "purple" : "Ce",
-          "brown" : "Pe",
+          "purple" : "Cc",
+          "brown" : "Px",
           "orange" : "Bf",
           "blue" : "Pc",
           "yellow" : "So",
           "darkblue" : "Sc",
           "gray" : "Le",
           "pink" : "Em",
-          "black" : "Ou",
+          "black" : "Ow",
           "special" : "Sp"
         };
         console.log(typeof speedPowers);
@@ -258,16 +265,16 @@
           console.log("DIAL CODE:", match);
           var rowID = generateRowID();
           var rowAttrs = {};
-          rowAttrs["repeating_clicks_" + rowID + "_speed"] = match[2];
+          rowAttrs["repeating_clicks_" + rowID + "_speed"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_speedpowers"] = powerLookup(speedPowers, match[1]);
           match = regEx.exec(bbCode);
-          rowAttrs["repeating_clicks_" + rowID + "_attack"] = match[2];
+          rowAttrs["repeating_clicks_" + rowID + "_attack"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_attackpowers"] = powerLookup(attackPowers, match[1]);
           match = regEx.exec(bbCode);
-          rowAttrs["repeating_clicks_" + rowID + "_defense"] = match[2];
+          rowAttrs["repeating_clicks_" + rowID + "_defense"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_defensepowers"] = powerLookup(defensePowers, match[1]);
           match = regEx.exec(bbCode);
-          rowAttrs["repeating_clicks_" + rowID + "_damage"] = match[2];
+          rowAttrs["repeating_clicks_" + rowID + "_damage"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_damagepowers"] = powerLookup(damagePowers, match[1]);
 
           setAttrs(rowAttrs);
