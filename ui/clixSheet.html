@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link href="clixSheet.css" rel="stylesheet" type="text/css">
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+  <div>
     <div class="controls">
       <div class="setnumber">
         <label>Dial</label>
@@ -19,10 +14,6 @@
       <div>
         <label>Range</label>
         <input type="text" name="attr_damage_current_max">
-      </div>
-      <div>
-        <label>Powers</label>
-        <textarea class="statsentry" type="text" name="attr_powers"></textarea>
       </div>
     </div>
     <div class="current_stats">
@@ -42,6 +33,10 @@
           <label>Damage</label>
           <input type="text" name="attr_damage_current" readonly="readonly">
         </div>
+    </div>
+    <div class="powers">
+      <label>Powers</label>
+      <textarea class="statsentry" type="text" name="attr_powers"></textarea>
     </div>
     <break/>
     <fieldset class="repeating_clicks">
@@ -126,26 +121,19 @@
         </select>
       </div>
     </fieldset>
-  </body>
+  </div>
+
   <script type="text/worker">
 
-  /*on("sheet:opened", function() {
-    var default_attr = {};
-    getAttrs(["click"], function(currentClick) {
-    default_attr["width"] = 70;
-    default_attr["height"] = 70;
-    default_attr["bar1_value"] = 10;
-    default_attr["bar1_max"] = 15;
-
-  }*/
-
-  function statNormalization(stat) {
-    if(stat=="."){
-      stat=0;
+    //The website that most of the bbcode version of dials come from uses . instead of 0 sometimes
+    function statNormalization(stat) {
+      if(stat=="."){
+        stat=0;
+      }
+      return stat;
     }
-    return stat;
-  }
 
+    //given the colour of the power from bbcode get our two letter power code
     function powerLookup(powerMap, powerName) {
       if(hasOwnProperty.call(powerMap, powerName.toLowerCase())){
         return powerMap[powerName.toLowerCase()];
@@ -154,6 +142,7 @@
       }
     }
 
+    //Add brackets to existing powers of return nothing if no power
     function powerSet(values, attributeName) {
       if(values[attributeName]!="None"){
         return "(" + values[attributeName] + ")";
@@ -162,15 +151,14 @@
       }
     }
 
-
+    //Takes BBcode from within the input box and parses it into the repeating click sections
     on("clicked:populate", function(){
 
+      //Delete existing repeating sections
       getSectionIDs("clicks", function(idArray) {
-        console.log("FIRST ID: " + idArray[0]);
         for(var id = 0; id < idArray.length; id++){
           removeRepeatingRow("repeating_clicks_" + idArray[id]);
         }
-
       });
 
 
@@ -178,19 +166,16 @@
       getAttrs(["dial"], function(dialCode){
         var bbCode = dialCode.dial;
 
-
+        //Parse and set range
         var rangeRegEx = /\Range:\ \[b\]([0-9]*)/;
         var range = rangeRegEx.exec(bbCode);
-
-        console.log("RANGE: " + range);
         setAttrs({
           damage_current_max: range[1]
         });
 
+        //Parse special powers and place them in powers box
         var powersRegEx = /\((.*)\[\/b\](.*)/g;
-
         var allPowers="";
-
         while( match = powersRegEx.exec(bbCode)){
           console.log("POWERS: " + match);
           allPowers = allPowers + match[1] + match[2] + "\n";
@@ -199,6 +184,7 @@
           powers: allPowers
         });
 
+        //Prepare RegEx and Power-Colour associations for dial populate
         var regEx = /\[slot=([a-z]*)]([0-9]*|\.)\[\/slot]/g;
         var speedPowers = {
           "green" : "Ch",
@@ -237,7 +223,7 @@
           "purple" : "Wp",
           "brown" : "Im",
           "orange" : "To",
-          "blue" : "Ba",
+           "blue" : "Ba",
           "yellow" : "De",
           "darkblue" : "Mm",
           "gray" : "Ip",
@@ -260,19 +246,24 @@
           "black" : "Ow",
           "special" : "Sp"
         };
-        console.log(typeof speedPowers);
+
+        //Fill in each click with the stats and powers
         while( match = regEx.exec(bbCode)){
-          console.log("DIAL CODE:", match);
+
           var rowID = generateRowID();
           var rowAttrs = {};
+
           rowAttrs["repeating_clicks_" + rowID + "_speed"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_speedpowers"] = powerLookup(speedPowers, match[1]);
+
           match = regEx.exec(bbCode);
           rowAttrs["repeating_clicks_" + rowID + "_attack"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_attackpowers"] = powerLookup(attackPowers, match[1]);
+
           match = regEx.exec(bbCode);
           rowAttrs["repeating_clicks_" + rowID + "_defense"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_defensepowers"] = powerLookup(defensePowers, match[1]);
+
           match = regEx.exec(bbCode);
           rowAttrs["repeating_clicks_" + rowID + "_damage"] = statNormalization(match[2]);
           rowAttrs["repeating_clicks_" + rowID + "_damagepowers"] = powerLookup(damagePowers, match[1]);
@@ -280,17 +271,15 @@
           setAttrs(rowAttrs);
         }
 
-
       });
 
     });
 
+    //Set current click values based on click number using repeating section index
     on("change:click", function() {
-      console.log("HI");
+
       getAttrs(["click"], function(currentClick) {
-        console.log("CLICK" + currentClick.click);
         getSectionIDs("clicks", function(idArray) {
-         console.log("IDS" + idArray[0]);
          getAttrs(["repeating_clicks_" + idArray[currentClick.click-1] +"_speed",
                   "repeating_clicks_" + idArray[currentClick.click-1] +"_attack",
                   "repeating_clicks_" + idArray[currentClick.click-1] +"_defense",
@@ -299,11 +288,11 @@
                   "repeating_clicks_" + idArray[currentClick.click-1] +"_attackpowers",
                   "repeating_clicks_" + idArray[currentClick.click-1] +"_defensepowers",
                   "repeating_clicks_" + idArray[currentClick.click-1] +"_damagepowers"], function(values) {
-          console.log("VALUES" + idArray.length);
           var speed = "";
           var attack = "";
           var defense = "";
           var damage = "";
+
           if(currentClick.click <= idArray.length){
             speed = values["repeating_clicks_" + idArray[currentClick.click-1] +"_speed"]
                                                     + powerSet(values, "repeating_clicks_" + idArray[currentClick.click-1] +"_speedpowers");
@@ -330,8 +319,6 @@
       });
     });
   });
-
-  // ... etc
 
   </script>
 </html>
