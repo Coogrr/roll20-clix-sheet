@@ -22,7 +22,7 @@
 
 }
 .sheet-statsentry:focus {
-      position: fixed;
+      position: relative;
       width: 300px;
       height: 300px;
       z-index: 100;
@@ -54,10 +54,14 @@
   background-color: transparent;
   cursor: default;
 }
-.sheet-powers div{
-  border: 1px solid #000000;
+.sheet-powers{
+  display: flex;
+  border-bottom: 1px solid #cdcdcd;
+  border-top: 1px solid #cdcdcd;
   border-radius: 8px;
   margin: 2px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .repcontainer{
   display: flex;
